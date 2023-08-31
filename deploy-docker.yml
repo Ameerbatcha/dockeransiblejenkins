@@ -1,5 +1,5 @@
 ---
-- hosts: dev
+- hosts: dockeradmin
   user: root
   tasks:
     - name: Install python pip
