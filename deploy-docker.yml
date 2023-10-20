@@ -15,7 +15,7 @@
     - name: Start the container
       docker_container:
         name: resultapp
-        image: "ameerbatcha/regapp:{{DOCKER_TAG}}"
+        image: "ameerbatcha/devsecops:{{DOCKER_TAG}}"
         state: started
         published_ports:
           - 0.0.0.0:8080:8080
