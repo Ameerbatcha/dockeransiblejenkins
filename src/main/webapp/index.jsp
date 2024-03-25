@@ -36,7 +36,7 @@
         '</header>' +
         '<div class="content">' +
         '<p>Welcome to my simple React webpage!</p>' +
-        '<p>This is just a basic example to get you started.</p>' +
+        '<p>This is just a basic example to get you started already.</p>' +
         '</div>' +
         '</div>'
       );
