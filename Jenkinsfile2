@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     tools {
-            maven 'maven'
+            maven 'maven3'
           }
           
     environment {
@@ -26,7 +26,7 @@ pipeline {
       
         stage('Create an Image') {
             steps {
-              sh 'docker build . -t ameerbatcha/regapp:${DOCKER_TAG}'
+              sh 'docker build . -t ameerbatcha/sampleapp:${DOCKER_TAG}'
             }
         }
         
@@ -37,16 +37,16 @@ pipeline {
                       sh 'docker login -u ameerbatcha -p ${dockerhubpasswd}'
                    }
              
-              sh 'docker push ameerbatcha/regapp:${DOCKER_TAG}'
+              sh 'docker push ameerbatcha/sampleapp:${DOCKER_TAG}'
             }
          }
          
          
-          stage('Deploy on Container') {
-            steps {
-           ansiblePlaybook credentialsId: 'dev-dockerhost', disableHostKeyChecking: true, extras: '-e DOCKER_TAG=${DOCKER_TAG}', installation: 'ansible', inventory: 'dev.inv', playbook: 'deploy-docker.yml'
-            }
-        }
+        //  stage('Deploy on Container') {
+          //  steps {
+           // ansiblePlaybook credentialsId: 'dev-dockerhost', disableHostKeyChecking: true, extras: '-e DOCKER_TAG=${DOCKER_TAG}', installation: 'ansible', inventory: 'dev.inv', playbook: 'deploy-docker.yml'
+           // }
+         // } 
         
     }
 }
